@@ -72,5 +72,3 @@ Métricas utilizadas: **MAE, RMSE, MSE e R²**, com validação cruzada (10 fold
 - Modelos mais complexos (Random Forest, Gradient Boosting) foram superiores à regressão linear, indicando que a severidade dos acidentes depende de relações **não lineares**.  
 - A variável **UPS** se mostrou uma excelente escolha como alvo, permitindo capturar diferentes níveis de gravidade.  
 - O projeto demonstra o potencial da ciência de dados para **transformar dados brutos em inteligência aplicada à segurança viária**, apoiando políticas públicas e estratégias de prevenção.  
-
----
