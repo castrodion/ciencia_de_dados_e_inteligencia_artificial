@@ -1,14 +1,13 @@
-# 📊 Projeto de Ciência de Dados e Inteligência Artificial – Fase 1
-### Análise de Acidentes de Trânsito em Porto Alegre  
+# 📊 Projeto de Ciência de Dados e Inteligência Artificial – Acidentes de Trânsito em Porto Alegre  
 
 ## 📌 Introdução  
-O objetivo desta primeira fase do projeto é selecionar um conjunto de dados relevante, realizar uma exploração inicial com a ferramenta **Orange Data Mining** e identificar oportunidades de aplicação em ciência de dados e inteligência artificial.  
+Este projeto tem como objetivo aplicar conceitos de **Ciência de Dados** e **Inteligência Artificial** na análise de acidentes de trânsito em Porto Alegre.  
 
-O dataset escolhido refere-se aos **acidentes de trânsito registrados no município de Porto Alegre**, disponibilizado no portal de dados abertos da cidade. Esse conjunto reúne informações temporais, geográficas e descritivas sobre os acidentes, incluindo a gravidade de cada evento.  
+O trabalho foi dividido em duas fases:  
+1. **Fase 1** – Seleção, exploração inicial e preparação do conjunto de dados.  
+2. **Fase 2** – Aplicação de algoritmos de aprendizado de máquina e avaliação de desempenho.  
 
-Entre as variáveis selecionadas destacam-se: tipo de acidente, região, dia da semana, número de feridos, feridos graves, mortes, localização geográfica (latitude e longitude), data da ocorrência e a **UPS (Unidade Padrão de Severidade)**, que será utilizada como atributo alvo do projeto.  
-
-Esse conjunto de dados é particularmente interessante por possibilitar análises estatísticas e geográficas que podem auxiliar na **prevenção de acidentes** e na formulação de **políticas públicas de segurança viária**.  
+O dataset foi obtido do portal de [**Dados Abertos de Porto Alegre**](https://dadosabertos.poa.br/dataset/acidentes-de-transito-acidentes) e reúne informações temporais, geográficas e descritivas sobre os acidentes, incluindo a **UPS (Unidade Padrão de Severidade)**, utilizada como **atributo alvo**.  
 
 ---
 
@@ -17,39 +16,61 @@ Esse conjunto de dados é particularmente interessante por possibilitar análise
 - **Quantidade de registros**: 6.690 linhas  
 - **Quantidade de atributos selecionados**: 10 colunas  
 - **Formato disponível**: CSV  
-- **Recorte aplicado**: apenas acidentes ocorridos entre **01/01/2025 e 27/07/2025**, com exclusão de linhas vazias.  
+- **Recorte aplicado**: acidentes ocorridos entre **01/01/2025 e 27/07/2025**, com remoção de linhas incompletas.  
 
 ---
 
 ## 📑 Colunas Selecionadas  
 
-| Variável     | O que representa                         | Tipo de dado | Exemplos de valores |
-|--------------|------------------------------------------|--------------|---------------------|
-| **data**     | Data do acidente                         | Data         | 01/01/2025 |
-| **tipo_acid**| Tipo de acidente                         | Nominal      | Colisão, Atropelamento |
-| **regiao**   | Região da cidade                         | Nominal      | Centro, Leste |
-| **dia_sem**  | Dia da semana                            | Nominal      | Segunda, Quarta-feira |
-| **feridos**  | Número de feridos leves                  | Numérico     | 0, 1, 2, ... |
-| **feridos_gr** | Número de feridos graves               | Numérico     | 0, 1, 2, ... |
-| **mortes**   | Número de vítimas fatais                 | Numérico     | 0, 1 |
-| **latitude** | Coordenada geográfica                    | Numérico     | -30.0476 |
-| **longitude**| Coordenada geográfica                    | Numérico     | -51.183 |
-| **UPS**      | Unidade Padrão de Severidade (**alvo**)  | Numérico     | 1, 2, 13 |
+| Variável       | Descrição                               | Tipo       | Exemplo |
+|----------------|-----------------------------------------|-----------|---------|
+| **data**       | Data do acidente                        | Data      | 01/01/2025 |
+| **tipo_acid**  | Tipo de acidente                        | Nominal   | Colisão, Atropelamento |
+| **regiao**     | Região da cidade                        | Nominal   | Centro, Leste |
+| **dia_sem**    | Dia da semana                           | Nominal   | Segunda, Quarta-feira |
+| **feridos**    | Número de feridos leves                 | Numérico  | 0, 1, 2 |
+| **feridos_gr** | Número de feridos graves                | Numérico  | 0, 1, 2 |
+| **mortes**     | Número de vítimas fatais                | Numérico  | 0, 1 |
+| **latitude**   | Coordenada geográfica                   | Numérico  | -30.0476 |
+| **longitude**  | Coordenada geográfica                   | Numérico  | -51.183 |
+| **UPS**        | Unidade Padrão de Severidade (**alvo**) | Numérico  | 1, 2, 13 |
 
 ---
 
-## 🎯 Atributo Alvo e Oportunidades  
-O atributo **UPS (Unidade Padrão de Severidade)** representa a gravidade dos acidentes com base em pesos atribuídos aos danos. Ele será utilizado como **variável alvo** em modelos de aprendizado de máquina.  
-
-### Possíveis aplicações:  
-- **Classificação ou regressão** da severidade dos acidentes com base em variáveis temporais, espaciais e descritivas.  
-- **Análise preditiva de risco**, identificando padrões que levam a acidentes mais graves.  
-- **Subsídio a políticas públicas**, orientando campanhas educativas e intervenções em pontos críticos.  
-- **Gestão da mobilidade urbana**, priorizando ações que reduzam acidentes fatais e graves.  
+## 🔎 Fase 1 – Exploração Inicial  
+- Estatísticas descritivas das variáveis com **Feature Statistics**.  
+- Verificação da distribuição da variável **UPS**.  
+- Análises gráficas com **Scatter Plot** e **Correlations**, revelando que **feridos, feridos graves e mortes** possuem forte correlação positiva com a UPS.  
 
 ---
 
-## 🚀 Conclusão  
-Esta fase inicial permitiu compreender a estrutura do dataset e preparar os dados para futuras análises. O uso da variável **UPS** como alvo abre espaço para aplicações práticas em **classificação de severidade, previsão de riscos e formulação de políticas de segurança viária**, transformando dados históricos em conhecimento útil para a sociedade.  
+## 🤖 Fase 2 – Modelagem Preditiva  
+
+### Algoritmos utilizados  
+- **Linear Regression** – modelo simples, usado como linha de base.  
+- **Random Forest** – robusto, captura relações não lineares e interações complexas.  
+- **Gradient Boosting** – modelo avançado para casos de maior severidade.  
+
+### Preparação dos dados  
+- Conversão de variáveis categóricas com **One-Hot Encoding** (widget *Continuize*).  
+- Divisão em treino (80%) e teste (20%) com **Data Sampler**.  
+
+### Avaliação dos modelos  
+Métricas utilizadas: **MAE, RMSE, MSE e R²**, com validação cruzada (10 folds).  
+
+| Modelo            | MAE   | RMSE  | MSE   | R²    |
+|-------------------|-------|-------|-------|-------|
+| Random Forest     | 0.449 | 0.638 | 0.407 | 0.820 |
+| Gradient Boosting | 0.457 | 0.647 | 0.418 | 0.815 |
+| Linear Regression | 0.485 | 0.686 | 0.471 | 0.793 |
+
+➡️ **Random Forest** apresentou o melhor desempenho, com **R² de 0.820** e **RMSE de 0.638**.  
+
+---
+
+## 🎯 Conclusões  
+- Modelos mais complexos (Random Forest, Gradient Boosting) foram superiores à regressão linear, indicando que a severidade dos acidentes depende de relações **não lineares**.  
+- A variável **UPS** se mostrou uma excelente escolha como alvo, permitindo capturar diferentes níveis de gravidade.  
+- O projeto demonstra o potencial da ciência de dados para **transformar dados brutos em inteligência aplicada à segurança viária**, apoiando políticas públicas e estratégias de prevenção.  
 
 ---
